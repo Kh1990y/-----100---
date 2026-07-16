@@ -69,4 +69,367 @@
                     </div>
 
                     <!-- Simulator Controls / Story Steps -->
-                    <div class="m
+                    <div class="mb-6 p-4 bg-slate-950 rounded-xl border border-slate-850">
+                        <p class="text-xs text-slate-400 mb-3 uppercase tracking-wider font-semibold">خطوات القصة (اضغط لتجربة تأثيرها المالي):</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                            <button id="step-btn-1" onclick="triggerStep(1)" class="p-3 text-right rounded-lg border text-xs transition-all bg-slate-900 border-slate-800 hover:border-indigo-500">
+                                <span class="block font-bold text-indigo-400 mb-1">الخطوة 1: الاستلاف</span>
+                                استلاف 50 ألف من الأب و 50 ألف من الأم.
+                            </button>
+                            <button id="step-btn-2" onclick="triggerStep(2)" class="p-3 text-right rounded-lg border text-xs transition-all bg-slate-900 border-slate-800 opacity-50 cursor-not-allowed" disabled>
+                                <span class="block font-bold text-amber-400 mb-1">الخطوة 2: الشراء</span>
+                                شراء السيارة بـ 97,000 ريال.
+                            </button>
+                            <button id="step-btn-3" onclick="triggerStep(3)" class="p-3 text-right rounded-lg border text-xs transition-all bg-slate-900 border-slate-800 opacity-50 cursor-not-allowed" disabled>
+                                <span class="block font-bold text-emerald-400 mb-1">الخطوة 3: السداد الجزئي</span>
+                                إرجاع 1,000 للأب و 1,000 للأم وبقاء 1,000 معك.
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Visual Dashboard of accounts -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                        <!-- Card: Debt Father -->
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                            <span class="text-2xl block mb-1">👴</span>
+                            <span class="text-xs text-slate-400 block">دين الأب</span>
+                            <span id="debt-father-val" class="text-lg font-bold text-rose-400">0 ريال</span>
+                        </div>
+                        <!-- Card: Debt Mother -->
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                            <span class="text-2xl block mb-1">👵</span>
+                            <span class="text-xs text-slate-400 block">دين الأم</span>
+                            <span id="debt-mother-val" class="text-lg font-bold text-rose-400">0 ريال</span>
+                        </div>
+                        <!-- Card: Cash in Hand -->
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                            <span class="text-2xl block mb-1">💼</span>
+                            <span class="text-xs text-slate-400 block">الكاش بجيبك</span>
+                            <span id="cash-val" class="text-lg font-bold text-emerald-400">0 ريال</span>
+                        </div>
+                        <!-- Card: Car Value -->
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center">
+                            <span class="text-2xl block mb-1">🚗</span>
+                            <span class="text-xs text-slate-400 block">قيمة السيارة</span>
+                            <span id="car-val" class="text-lg font-bold text-blue-400">0 ريال</span>
+                        </div>
+                    </div>
+
+                    <!-- Real-time Equation Checker -->
+                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
+                        <h4 class="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
+                            📊 الميزانية العمومية الحقيقية (الأرقام لا تكذب):
+                        </h4>
+                        
+                        <div class="space-y-4 text-sm">
+                            <div class="flex justify-between items-center pb-2 border-b border-slate-900">
+                                <span class="text-slate-400">مجموع دينك الحالي للأبوين:</span>
+                                <span id="total-debt-formula" class="font-bold text-rose-400">0 ريال</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-2 border-b border-slate-900">
+                                <span class="text-slate-400">أصولك الحالية (سيارة + الكاش بيدك):</span>
+                                <span id="total-assets-formula" class="font-bold text-emerald-400">0 ريال</span>
+                            </div>
+                            
+                            <!-- Status bar -->
+                            <div id="balance-status" class="p-3 rounded-lg text-center font-bold text-xs bg-slate-900 text-slate-300">
+                                ابدأ المحاكاة بالضغط على الخطوة الأولى أعلاه!
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Debating Tool (Send to Whatsapp) -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-lg font-bold text-slate-200 mb-2 flex items-center gap-2">
+                        <span>💬</span> سلاحك في الجروب (انسخ الرسالة فوراً)
+                    </h3>
+                    <p class="text-xs text-slate-400 mb-4">انسخ هذا النص الجاهز وأرسله في قروب النقاش لتنهي الجدل فوراً وبالدليل القاطع:</p>
+                    
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-850 relative text-xs text-slate-300 leading-relaxed mb-4 text-right whitespace-pre-line">
+                        <span id="whatsapp-text">💡 *حل لغز الـ 100,000 ريال والريال المفقود بالدليل القاطع:*
+
+الخدعة في اللغز تكمن في آخر خطوة لما قال لك: (اجمع الدين المتبقي 49,000 + 49,000 واجمع فوقهم الـ 1,000 ريال اللي في جيبك).
+
+*هذا خطأ رياضي ومحاسبي فادح!* ❌
+
+*الصح والمنطق:*
+- الدين المتبقي عليك هو: *98,000 ريال* (49,000 للأب + 49,000 للأم).
+- الـ 98,000 ريال هذي وينها فيه الحين؟
+هي عبارة عن: *قيمة السيارة (97,000 ريال)* + *الـ 1,000 ريال الكاش اللي في جيبك*.
+
+يعني الـ 1,000 ريال اللي في جيبك هي أصلاً *مشمولة ومحسوبة* داخل الـ 98,000 دين! 
+لما تجمع الدين (98,000) مع الـ 1,000 اللي في جيبك مرة ثانية، أنت تحسب الـ 1,000 ريال *مرتين*! وهذا هو الغلط اللي يخليهم يشوفون رقم 99,000 الوهمي.
+
+*الحسبة الصحيحة 100%:*
+إجمالي الفلوس (100,000) = الدين المتبقي عليك (98,000) + الفلوس اللي رجعتها لهم (2,000).
+ما في ولا ريال ضايع! 😉</span>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <button onclick="copyDebateText()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-all text-center">
+                            نسخ رسالة النقاش للواتساب 📋
+                        </button>
+                        <div id="copy-toast" class="hidden bg-slate-850 border border-slate-700 text-emerald-400 px-3 py-2 rounded-lg text-xs flex items-center">
+                            تم النسخ!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left Column: The Trap Visualizer (5 Cols) -->
+            <div class="lg:col-span-5 space-y-6">
+                <!-- Explainer Card of The Myth vs Truth -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-lg h-full flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-200 mb-4 flex items-center gap-2">
+                            <span>🎭</span> تشريح الخدعة البصرية
+                        </h3>
+                        
+                        <!-- Visual representation of the lie -->
+                        <div class="space-y-4">
+                            
+                            <!-- The Lie block -->
+                            <div class="border-2 border-dashed border-rose-500/30 bg-rose-500/5 p-4 rounded-xl">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-xs font-bold text-rose-400 uppercase tracking-wider">الحسبة الغلط (مطب اللغز)</span>
+                                    <span class="text-lg">❌</span>
+                                </div>
+                                <div class="text-sm font-semibold text-slate-200 mb-2">
+                                    جمع الدين المتبقي + الكاش اللي بجيبك:
+                                </div>
+                                <div class="text-xl font-black text-rose-300 tracking-wider">
+                                    49,000 + 49,000 + <span class="underline">1,000</span> = 99,000
+                                </div>
+                                <p class="text-xs text-rose-200/70 mt-2 leading-relaxed">
+                                    *لماذا هذا غلط؟* لأن الـ 1,000 ريال هي جزء من الـ 98,000 دين أصلاً (حيث السيارة بـ 97,000 والـ 1,000 في جيبك). جمعهم معاً هو خطأ محاسبي تكرر فيه حساب الـ 1,000 مرتين!
+                                </p>
+                            </div>
+
+                            <!-- The Truth block -->
+                            <div class="border border-emerald-500/30 bg-emerald-500/5 p-4 rounded-xl">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">الحسبة الصح (ميزان الذهب)</span>
+                                    <span class="text-lg">✅</span>
+                                </div>
+                                <div class="text-sm font-semibold text-slate-200 mb-2">
+                                    مساواة الدين بالأصول التي تملكها:
+                                </div>
+                                <div class="text-xl font-black text-emerald-300 tracking-wider">
+                                    98,000 (الدين) = 97,000 + 1,000
+                                </div>
+                                <p class="text-xs text-emerald-200/70 mt-2 leading-relaxed">
+                                    *لماذا هذا صح؟* لأن الدين المتبقي عليك للوالدين ($98,000$) يساوي تماماً ما تملكه الآن: السيارة التي قيمتها $97,000$ ريال، زائد الـ $1,000$ ريال الكاش المتبقية في جيبك. المعادلة متزنة بالملي!
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-slate-800 text-center">
+                        <p class="text-xs text-slate-400 mb-2">هل ما زلت بحاجة لطريقة بديلة للشرح؟</p>
+                        <div class="flex gap-2 justify-center">
+                            <button onclick="showAlternativeScenario()" class="text-xs bg-slate-800 hover:bg-slate-750 text-slate-200 px-3 py-1.5 rounded-lg border border-slate-700 transition-all">
+                                سيناريو "الخصم بالمعرض" 🚗
+                            </button>
+                            <button onclick="showSimpleDebtScenario()" class="text-xs bg-slate-800 hover:bg-slate-750 text-slate-200 px-3 py-1.5 rounded-lg border border-slate-700 transition-all">
+                                سيناريو "دين الـ 100 ريال" 💵
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Custom Modal for Alternative Scenarios -->
+    <div id="scenario-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-md w-full shadow-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modal-title" class="text-lg font-bold text-emerald-400">سيناريو إضافي</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-200 text-xl font-bold">&times;</button>
+            </div>
+            <p id="modal-desc" class="text-sm text-slate-300 leading-relaxed mb-6 whitespace-pre-line"></p>
+            <button onclick="closeModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-2 rounded-lg text-sm transition-all">
+                فهمت كذا تماماً! 👍
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs text-slate-500">
+        <p>تم إنشاؤه لإثبات حجة النقاش بالأدلة الرياضية والمحاسبية القاطعة © 2026</p>
+    </footer>
+
+    <!-- App Logic -->
+    <script>
+        // State variables
+        let currentStep = 0;
+        let data = {
+            debtFather: 0,
+            debtMother: 0,
+            cash: 0,
+            car: 0
+        };
+
+        // DOM elements
+        const elements = {
+            debtFather: document.getElementById('debt-father-val'),
+            debtMother: document.getElementById('debt-mother-val'),
+            cash: document.getElementById('cash-val'),
+            car: document.getElementById('car-val'),
+            totalDebtFormula: document.getElementById('total-debt-formula'),
+            totalAssetsFormula: document.getElementById('total-assets-formula'),
+            balanceStatus: document.getElementById('balance-status'),
+            step1: document.getElementById('step-btn-1'),
+            step2: document.getElementById('step-btn-2'),
+            step3: document.getElementById('step-btn-3'),
+            whatsappText: document.getElementById('whatsapp-text'),
+            copyToast: document.getElementById('copy-toast'),
+            modal: document.getElementById('scenario-modal'),
+            modalTitle: document.getElementById('modal-title'),
+            modalDesc: document.getElementById('modal-desc')
+        };
+
+        // Initialize elements on load
+        updateUI();
+
+        function triggerStep(step) {
+            currentStep = step;
+            if (step === 1) {
+                data.debtFather = 50000;
+                data.debtMother = 50000;
+                data.cash = 100000;
+                data.car = 0;
+                
+                // Toggle Buttons
+                elements.step1.classList.add('border-emerald-500', 'bg-emerald-950/20');
+                elements.step2.classList.remove('opacity-50', 'cursor-not-allowed');
+                elements.step2.disabled = false;
+            } else if (step === 2) {
+                data.cash = 3000;
+                data.car = 97000;
+
+                // Toggle Buttons
+                elements.step2.classList.add('border-emerald-500', 'bg-emerald-950/20');
+                elements.step3.classList.remove('opacity-50', 'cursor-not-allowed');
+                elements.step3.disabled = false;
+            } else if (step === 3) {
+                data.debtFather = 49000;
+                data.debtMother = 49000;
+                data.cash = 10000; // Oops, just 1000 cash in wallet
+                data.cash = 1000; // correct wallet amount
+
+                // Toggle Buttons
+                elements.step3.classList.add('border-emerald-500', 'bg-emerald-950/20');
+            }
+            updateUI();
+        }
+
+        function updateUI() {
+            elements.debtFather.innerText = data.debtFather.toLocaleString() + ' ريال';
+            elements.debtMother.innerText = data.debtMother.toLocaleString() + ' ريال';
+            elements.cash.innerText = data.cash.toLocaleString() + ' ريال';
+            elements.car.innerText = data.car.toLocaleString() + ' ريال';
+
+            let totalDebt = data.debtFather + data.debtMother;
+            let totalAssets = data.car + data.cash;
+
+            elements.totalDebtFormula.innerText = totalDebt.toLocaleString() + ' ريال';
+            elements.totalAssetsFormula.innerText = totalAssets.toLocaleString() + ' ريال';
+
+            // Status Bar messages based on current step
+            if (currentStep === 0) {
+                elements.balanceStatus.innerHTML = "☝️ الرجاء الضغط على <span class='text-indigo-400'>'الخطوة 1'</span> لبدء الرحلة المالية للـ 100,000 ريال.";
+                elements.balanceStatus.className = "p-3 rounded-lg text-center font-bold text-xs bg-slate-900 text-slate-300";
+            } else if (currentStep === 1) {
+                elements.balanceStatus.innerHTML = "استلفت 100 ألف كاملة. دينك الحالي 100 ألف والكاش معك 100 ألف. الميزانية متوازنة تماماً! اضغط على الخطوة 2.";
+                elements.balanceStatus.className = "p-3 rounded-lg text-center font-bold text-xs bg-indigo-950/30 text-indigo-300 border border-indigo-500/20";
+            } else if (currentStep === 2) {
+                elements.balanceStatus.innerHTML = "اشتريت السيارة. أصولك الآن هي (سيارة 97 ألف + كاش 3 آلاف) ومجموع دينك 100 ألف. الحسبة صحيحة بالملي! اضغط على الخطوة 3.";
+                elements.balanceStatus.className = "p-3 rounded-lg text-center font-bold text-xs bg-amber-950/30 text-amber-300 border border-amber-500/20";
+            } else if (currentStep === 3) {
+                elements.balanceStatus.innerHTML = "🚨 هُنا مقتل اللغز! دينك المتبقي هو 98 ألف. هذا الدين يساوي قيمة سيارتك (97 ألف) + الألف اللي بجيبك. جمع الـ 98 ألف مع الـ ألف ريال هراء محاسبي يكرر حساب الألف مرتين!";
+                elements.balanceStatus.className = "p-3 rounded-lg text-center font-bold text-xs bg-emerald-950/40 text-emerald-300 border border-emerald-500/30 animate-pulse";
+            }
+        }
+
+        function resetSimulator() {
+            currentStep = 0;
+            data = { debtFather: 0, debtMother: 0, cash: 0, car: 0 };
+            
+            // Reset buttons
+            elements.step1.className = "p-3 text-right rounded-lg border text-xs transition-all bg-slate-900 border-slate-800 hover:border-indigo-500";
+            elements.step2.className = "p-3 text-right rounded-lg border text-xs transition-all bg-slate-900 border-slate-800 opacity-50 cursor-not-allowed";
+            elements.step2.disabled = true;
+            elements.step3.className = "p-3 text-right rounded-lg border text-xs transition-all bg-slate-900 border-slate-800 opacity-50 cursor-not-allowed";
+            elements.step3.disabled = true;
+
+            updateUI();
+        }
+
+        function showAlternativeScenario() {
+            elements.modalTitle.innerText = "Scenario 🚗 خصم المعرض العجيب";
+            elements.modalDesc.innerText = `تخيل التالي لتبسيط اللغز تماماً وصدم من تجادلهم:
+
+- استلفت 50 ألف من الأب و 50 ألف من الأم (المجموع 100 ألف).
+- رحت المعرض تشتري سيارة بـ 97 ألف.
+- المعرض وافق يعطيك السيارة بـ 97 ألف كاش ويعطيك الباقي (3 آلاف) بيدك.
+- أنت الحين تملك سيارة بـ 97 ألف وبجيبك 3 آلاف كاش.
+- قررت ترجع الـ 3 آلاف كاملة لهم: 1,500 لأبوك و 1,500 لأمك.
+
+كم صار دينهم الحين؟
+- دين الأب: 50,000 - 1,500 = 48,500
+- دين الأم: 50,000 - 1,500 = 48,500
+- مجموع دينهم المتبقي: 48,500 + 48,500 = 97,000 ريال!
+
+هذا المجموع (97,000 ريال) هو بالضبط قيمة سيارتك الحالية بالملي ومعد في جيبك ولا ريال. هل نقص أي شيء؟ لا! 
+هذا يوضح أن الدين دائماً يساوي الأصول التي معك، ولا يُجمع فوقها الكاش!`;
+            elements.modal.classList.remove('hidden');
+        }
+
+        function showSimpleDebtScenario() {
+            elements.modalTitle.innerText = "Scenario 💵 لغز الـ 100 ريال المبسط";
+            elements.modalDesc.innerText = `إذا سألوك كيف يعني نجمع الكاش مرتين، اعطهم هذا السيناريو الفوري:
+
+"لو أنا أطلبك 100 ريال دين.. وأنت الحين في جيبك 10 ريال كاش..
+
+هل منطقي ورياضي نجمع ديني اللي عليك (100) + الـ (10) ريال اللي في جيبك ونقول المجموع 110 ريال؟! 
+وش دخل هذي في هذي؟!
+
+الـ 10 ريال اللي في جيبك هي أصل تملكه أنت، والدين 100 ريال هو التزام عليك. جمعهم مع بعض هو هراء رياضي لا قيمة له في المحاسبة.
+
+نفس الشيء في اللغز تماماً: جمع دين الأبوين المتبقي (98,000) مع الـ (1,000) اللي في جيبك خطأ، لأن الألف هي أصلاً داخلة في الـ 98 ألف!"`;
+            elements.modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            elements.modal.classList.add('hidden');
+        }
+
+        function copyDebateText() {
+            const textToCopy = elements.whatsappText.innerText;
+            
+            // Fallback clipboard method as per CSP Guardrails
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            try {
+                document.execCommand("copy");
+                elements.copyToast.classList.remove('hidden');
+                setTimeout(() => {
+                    elements.copyToast.classList.add('hidden');
+                }, 2000);
+            } catch (err) {
+                console.error("خطأ في نسخ النص: ", err);
+            }
+            document.body.removeChild(tempTextArea);
+        }
+    </script>
+</body>
+</html>
+
